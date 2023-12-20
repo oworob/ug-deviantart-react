@@ -1,0 +1,95 @@
+{
+    "facts": [
+
+    {
+      "id": 0,
+      "description": "Art used to be a competition in the Olympics."
+    }, 
+    {
+      "id": 1,
+      "description": "The Mona Lisa has her own mailbox in the Louvre because of all the love letters she receives."
+    }, 
+    {
+      "id": 2,
+      "description": "chleb żytni"
+    },
+    {
+      "id": 3,
+      "description": "The colour wheel was invented in 1706, it's older than United States!"
+    },
+    {
+      "id": 4,
+      "description": "Bob Ross once got approached by a color-blind person, who believed they couldn't ever paint. The painter dedicated an entire episode painting only in grey just to prove them wrong."
+    },
+    {
+      "id": 5,
+      "description": "The Romans purposely made statues with detachable heads. This was so that they could replace the head with another one easily, depending on which god, hero or ruler was popular at the time."
+    },
+    {
+      "id": 6,
+      "description": "The oldest-known artwork is a painting of three wild pigs deep in a limestone cave on the Indonesian island of Sulawesi - it's believed to be at least 45000 years old!"
+    },
+    {
+      "id": 7,
+      "description": "Leonardo da Vinci was left-handed, but he was equally adept at writing and painting with his right hand, making him ambidextrous."
+    },
+    {
+      "id": 8,
+      "description": "'The Scream', a popular painting by Edvard Munch exists in five different versions."
+    },
+    {
+      "id": 9,
+      "description": "The first pencil was invented shortly after the discovery of graphite in 1565."
+    },
+    {
+      "id": 10,
+      "description": "The longest stop-motion film is LAIKA's Kubo and the Two Strings, with a running time of 1 hour and 41 minutes. It was nearly beaten by Wes Anderson's Isle of Dogs which fell short by only 1 minute!"
+    },
+    {
+      "id": 11,
+      "description": "The Nightmare Before Christmas took three years to create, at 24 frames per second. The completed film has around 110,000 frames, and there were more than 400 heads with various expressions created for Jack alone."
+    },
+    {
+      "id": 12,
+      "description": "The vast majority of claymation characters have an armature inside - a skeleton made out of wire which supports the structure and helps movements appear more natural."
+    },
+    {
+      "id": 13,
+      "description": "The first digital drawing software was executed on the first Mac computers in early 1980s."
+    },
+    {
+      "id": 14,
+      "description": "Digital artists working as medical animators play a massive role in the medical industry."
+    },
+    {
+      "id": 15,
+      "description": "The word 'photography' comes from the Greek, meaning to draw with light."
+    },
+    {
+      "id": 16,
+      "description": "Some of the most popular subjects of photography in the 1800s were corpses."
+    },
+    {
+      "id": 17,
+      "description": "The most viewed photograph in the history is the Windows XP's default wallpaper. It was taken in 1996."
+    },
+    {
+      "id": 18,
+      "description": "The oldest photograph that we know is from 1826. It took 8 hours to expose."
+    },
+    {
+      "id": 19,
+      "description": "The obsession with cats in the photography world started long before the Internet. The pioneer in cat photos was Harry Pointer - he began photographing cats in the 1870s."
+    },
+    {
+      "id": 20,
+      "description": "The world's first photo in color came from three different photographs taken through blue, green, and red filters in 1861."
+    },
+    {
+      "id": 21,
+      "description": "People did not smile in old photos due to the long exposure times - they had to pose for up to 20 minutes!"
+    }
+    
+
+    ]
+}

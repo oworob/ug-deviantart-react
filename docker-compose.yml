@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  db:
+    image: neo4j:latest
+    container_name: da-db
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - .\database\data:/data
+      - .\database\logs:/logs
+    environment:
+      - NEO4J_AUTH=neo4j/deviantart
+    restart: unless-stopped
+
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:18.0.2
+    container_name: da-keycloak
+    ports:
+      - 8080:8080
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - ./keycloak:/opt/keycloak/data/h2
+    command: start-dev
+
+
+  server:
+    build: server
+    container_name: da-server
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+      - keycloak
+
+
+  client:
+    build: client
+    container_name: da-client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+      

@@ -1,0 +1,709 @@
+// VARIABLES
+$bc-def: rgb(10,10,10);
+$font-def: white;
+$font-gray: rgb(80, 80, 80);
+$green: rgb(56, 221, 163);
+$red: rgb(226, 73, 73);
+$lightgray: rgb(240, 240, 240);
+$font-medium-gray: rgb(170, 170, 170);
+$darkblue: #131317;
+
+// CLASSES AND DEFAULTS
+
+.hover { // hover green for text
+  transition: 0.3s;
+  &:hover {
+    color: $green;
+  }
+}
+
+.imageoverlay { // darken hover for images
+  height: calc(100%);
+  width: calc(100% - 40px);
+  opacity: 0;
+  transition: 0.3s;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0px 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  #left, #right {
+    display: flex;
+    flex-direction: column;
+    #artist {
+      display: flex;
+      gap: 6px;
+      font-weight: normal;
+      align-items: center;
+    }
+    #likes, #comments {
+      display: flex;
+      gap: 5px;
+    }
+  }
+  &:hover {
+    opacity: 1;
+  }
+}
+
+a { // overwrite default links
+  color: $font-def;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.greenbutton {
+  background-image: linear-gradient(165deg, #daffed, $green, #129554);
+  padding: 8px 30px 8px 30px;
+  color: $bc-def;
+  cursor: pointer;
+  transition: 0.2s;
+  background-size: 100%;
+  border-radius: 2px;
+  border: none;
+  font-weight: bold;
+  &:hover {
+    background-size: 200%;
+  }
+}
+
+.smallgrayp {
+  color: gray;
+  font-weight: normal;
+  font-size: 85%;
+}
+
+.Checkbox {
+  display: flex;
+  align-items: center;
+  input[type=checkbox] {
+    accent-color: $green;
+    -webkit-transform: scale(1.7);
+    cursor: pointer;
+  }
+  label {
+    margin-left: 10px;
+  }
+}
+
+#error {
+  position: absolute;
+  color: $red;
+  font-size: 70%;
+  margin-top: 2px;
+  font-weight: normal;
+}
+
+#profilepic { // for consistency
+  border-radius: 20%;
+  background-image: url(components/Images/ProfilePicturePlaceholder.jpg);
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.profilebc {
+  background-color: $darkblue;
+  background-size:'cover'
+}
+
+.imagegallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  #image {
+    height: 250px;
+    margin: 4px;
+    background-size: cover;
+    grid-column: span 3;
+    &:nth-child(7n+5), &:nth-child(7n+6), &:nth-child(7n+7) {
+      grid-column: span 4;
+    }
+  }      
+}
+
+
+// MAIN
+body {
+  margin: 0;
+  background-color: $bc-def;
+  color: $font-def;
+  font-family: "Helvetica Neue", "Helvetica";
+  //font-family: "Comic Sans MS";
+  font-size: 90%;
+  ::selection { //green highlight for text
+    background: $green;
+  }
+}
+
+// COMPONENTS
+#Nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+  border-bottom: solid $font-gray 2px;
+  align-items: center;
+  #logo {
+    margin-top: 4px;
+  }
+  #profile {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    p {
+      margin-block: 0;
+      font-size: 120%;
+    }
+  }
+  #searchbox {
+    display: flex;
+    padding: 6px;
+    border-radius: 2px;
+    border: 2px solid $font-gray;
+    width: 300px;
+    align-items: center;
+    color: gray;
+    transition: 0.3s;
+    background-color: $darkblue;
+    input {
+      color: gray;
+      margin-left: 5px;
+      box-sizing: border-box;
+      background-color: $darkblue;
+      outline: none;
+      border: none;
+      width: 100%;
+      transition: 0.3s;
+      &:focus {
+        color: $font-def;
+      }
+    }
+    &:has(input:focus) {
+      border-color: $green;
+    }
+  }
+  #SubmitButton {
+    display: flex;
+    align-items: center;
+    button {
+      cursor: pointer;
+      margin-left: 4px;
+      border: none;
+      font-weight: bold;
+      background: none;
+    }
+  }
+}
+
+#NotFound, #Loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  align-items: center;
+}
+
+#Home, #Tag, #Search, #Submit, #Edit {
+  padding: 15px;
+  #line {
+    margin: 15px 0px 5px 0px;
+    border-bottom: 2px solid $darkblue;
+  }
+  #heading {
+    display: flex;
+    gap: 6px;
+    margin-left: 20px;
+    font-size: 140%;
+    #bold {
+      font-weight: bold;
+    }
+  }
+  #facts {
+    display: flex;
+    gap: 12px;
+    margin-left: 20px;
+    #bold {
+      font-weight: bold;
+    }
+  }
+}
+
+#LoginPage, #RegisterPage {
+  margin: 0 auto;
+  display: grid;
+  width: 63%;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0px 0px 24px 0px rgb(16, 16, 16);
+  padding: 50px;
+
+  #WelcomePage { //left side
+    padding: 50px 120px 50px 50px;
+    background-image: url("components/Images/LoginBackground.jpg");
+    background-position: center;
+    background-size: cover;
+    font-weight: bolder;
+    h1 {
+      letter-spacing: 1px;
+      font-size: 300%;
+    }
+    #logo {
+      margin-bottom: 30px;
+    }
+    #desc {
+      font-weight: normal;
+      line-height: 25px;
+    }
+  }
+  #Register, #Login { //right side
+    color: $bc-def;
+    padding: 40px;
+    background-color: white;
+    font-weight: bold;
+    p:not(#error){
+      font-size: 85%;
+      margin-bottom: 2px;
+      margin-top: 20px;
+      &.biggerp { //overwrite default p
+        font-size: 100%;
+        font-weight: normal;
+        display: inline-block;
+      }
+    }
+    input:not([type=checkbox]) {
+      background-color: $lightgray;
+      box-sizing: border-box;
+      outline: none;
+      width: 100%;
+      transition: 0.3s;
+      padding: 5px;
+      border-radius: 2px;
+      border: 2px solid lightgray;
+      &:focus {
+        border-color: $green;
+      }
+    }
+    .Checkbox {
+      margin-top: 25px;
+    }
+    #loginbutton, #registerbutton { //small adjustments to green buttons
+      font-size: 110%;
+      margin-top: 20px;
+      width: 100%;
+    }
+    a {
+      color: $green;
+      display: inline-block;
+      margin-left: 8px;
+    }
+    
+  }
+}
+
+#ImagePage {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  
+  #left {
+    display: flex;
+    flex-direction: column;
+    #image {
+      padding: 20px;
+      background-image: linear-gradient($darkblue, $bc-def);
+      object-fit: contain;
+      transition: 0.3s;
+    }
+    >:not(#image) {
+      padding: 10px 130px;
+    }
+    #actions {
+      display: flex;
+      justify-content: space-between;
+      #rightbuttons {
+        display: flex;
+        gap: 30px;
+      }
+      a {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        #icon {
+          font-size: 120%;
+          margin-bottom: 3px;
+        }
+        p {
+          font-size: 90%;
+          margin-block: 0;
+        }
+      }
+    }
+    #underimage {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      #date {
+        color: $font-medium-gray;
+        font-size: 90%;
+      }
+      #main {
+        display: flex;
+        align-items: center;
+        #profilepic {
+          margin-right: 20px;
+          height: 60px;
+        }
+        #smallinfo {
+          display: flex;
+          flex-direction: column;
+          h1 {
+            margin-block: 0;
+          }
+          div#artist {
+            h3,p {
+              font-weight: bold;
+              margin-block: 0;
+            }
+            a {
+              font-size: 120%;
+            }
+            display: flex;
+            align-items: center;
+            gap: 5px;
+          }
+        }
+      }
+    }
+    #stats {
+      color: $font-medium-gray;
+      display: flex;
+      gap: 30px;
+      >div {
+        gap: 5px;
+        display: flex;
+        align-items: center;
+        #icon {
+          margin-bottom: 3px;
+        }
+      }
+    }
+    #tags {
+      display: flex;
+      gap: 6px;
+      #tag {
+        font-size: 80%;
+        padding: 10px;
+        border: 1px solid $font-gray;
+        border-radius: 5px;
+        background-color:$darkblue;
+        font-weight: normal;
+      }
+    }
+    #description {
+      color: $font-medium-gray;
+    }
+    #commentsection {
+      #title {
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      #comments {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        #commentform{
+          form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            textarea {
+              font-family: "Helvetica Neue", "Helvetica";
+              resize: none;
+              color: gray;
+              box-sizing: border-box;
+              background-color: $darkblue;
+              outline: none;
+              border: none;
+              width: 100%;
+              transition: 0.3s;
+              border: 2px solid $font-gray;
+              border-radius: 2px;
+              padding: 15px;
+              font-size: 100%;
+              overflow: hidden;
+              &:focus {
+                color: $font-def;
+                border-color: $green;
+              }
+            }
+            #submit {
+              align-self: flex-end;
+            }
+          }
+          
+        }
+        #mustlogin {
+          background-color: $darkblue;
+          padding: 20px 15px;
+          display: flex;
+          justify-content: center;
+          gap: 6px;
+          font-size: 105%;
+          a {
+            cursor: pointer;
+          }
+        }
+        #comment {
+          background-color: $darkblue;
+          padding: 8px 15px 4px 15px;
+          #header {
+            display: flex;
+            justify-content: space-between;
+            #left {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              gap: 10px;
+              #author {
+                padding:unset;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+              }
+              #profilepic {
+                height: 30px;
+              }
+              #date {
+                padding:unset;
+                margin-left: 10px;
+                font-size: 80%;
+                color: $font-medium-gray;
+              }
+            }
+            #deletecomment {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+  #right {
+    padding: 10px;
+    p {
+      font-size: 110%;
+      font-weight: bold;
+    }
+    #moreby, #similiar {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-gap: 10px;
+      aspect-ratio: 1;
+    }
+  }
+}
+
+#Profile, #EditProfile {
+  #header {
+    padding: 150px 80px 20px 80px;
+    display: flex;
+    gap: 20px;
+    #info {
+      h1 {
+        margin-block: 0;
+        font-weight: bold;
+        font-size: 350%;
+      }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      #stats {
+        display: flex;
+        gap: 15px;
+        font-size: 110%;
+        p:not(:last-child) {
+          padding-right: 15px;
+          border-right: 1px solid white;
+        }
+      }
+    }
+  }
+  >#about, #gallery {
+    padding: 10px 80px 10px 80px;
+  }
+  #about {
+    #top {
+      display: flex;
+      justify-content: space-between;
+      #rightbuttons {
+        display: flex;
+        gap: 30px;
+        h3 {
+          cursor: pointer;
+        }
+      }
+    }
+    #block {
+      padding: 8px 20px;
+      background-color: $darkblue;
+      text-align: justify;
+      line-height: 150%;
+      #date {
+        font-size: 90%;
+        color: $font-medium-gray;
+      }
+    }
+  }
+}
+
+#Search {
+  #count {
+    margin-left: 5px;
+    color: $font-gray;
+  }
+  #users {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    #user {
+      padding: 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 150%;
+    }
+  }
+}
+
+#Submit, #Edit {
+  padding: 0;
+  #header {
+    background-image: linear-gradient($darkblue, $bc-def);
+    display: flex;
+    flex-direction: column;
+    #heading{
+      padding: 15px 15px 0 15px;
+    }
+    #image {
+      padding: 20px;
+      max-height: 400px;
+      object-fit: contain;
+      transition: 0.3s;
+    }
+  }
+  textarea,input {
+    font-family: "Helvetica Neue", "Helvetica";
+    resize: none;
+    color: gray;
+    box-sizing: border-box;
+    background-color: $darkblue;
+    outline: none;
+    border: none;
+    width: 100%;
+    transition: 0.3s;
+    border: 2px solid $font-gray;
+    border-radius: 2px;
+    padding: 15px;
+    font-size: 100%;
+    overflow: hidden;
+    &:focus {
+      color: $font-def;
+      border-color: $green;
+    }
+  }
+  form {
+    padding: 0 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    p {
+      margin: 20px 0 5px 5px;
+    }
+    #error {
+      position: initial;
+      margin: 5px;
+    }
+    #submitbutton {
+      font-size: 120%;
+      align-self: flex-end;
+      margin: 20px;
+      width: 20%;
+    }
+    .ReactTags__selected {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+      .ReactTags__tag {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        color: white;
+        font-size: 80%;
+        padding: 5px 10px;
+        border: 1px solid $font-gray;
+        border-radius: 5px;
+        background-color:$darkblue;
+        font-weight: normal;
+        .ReactTags__remove {
+          border: none;
+          background: none;
+          color: white;
+          padding: 0;
+          font-size: 160%;
+          transition: 0.3s;
+          cursor: pointer;
+          &:hover {
+            color: $green;
+          }
+        }
+      }
+      .ReactTags__tagInput {
+        flex-basis: 100%;
+      }
+    }
+  }
+}
+
+#EditProfile {
+  form {
+    padding: 10px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    p {
+      margin: 20px 0 5px 5px;
+    }
+    #error {
+      position: initial;
+      margin: 5px;
+    }
+    #submitbutton {
+      font-size: 120%;
+      align-self: flex-end;
+      margin: 20px;
+      width: 20%;
+    }
+  }
+  textarea {
+    padding: unset;
+  }
+  textarea,input {
+    font-family: "Helvetica Neue", "Helvetica";
+    resize: none;
+    color: gray;
+    box-sizing: border-box;
+    background-color: $darkblue;
+    outline: none;
+    border: none;
+    transition: 0.3s;
+    border: 2px solid $font-gray;
+    border-radius: 2px;
+    padding: 15px;
+    font-size: 100%;
+    overflow: hidden;
+    line-height: 150%;
+    &:focus {
+      color: $font-def;
+      border-color: $green;
+    }
+  }
+}
