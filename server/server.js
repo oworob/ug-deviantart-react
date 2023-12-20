@@ -41,7 +41,7 @@ setInterval(function broadcastFact() {
 // DATABASE
 const neo4j = require('neo4j-driver')
 // const driver = neo4j.driver("neo4j://localhost:7687", neo4j.auth.basic('neo4j', 'deviantart'))
-const driver = neo4j.driver("bolt://db:7687", neo4j.auth.basic("neo4j", "deviantart"));
+const driver = neo4j.driver("bolt://da-db:7687", neo4j.auth.basic("neo4j", "deviantart"));
 
 
 function DateToObject(date) {
