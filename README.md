@@ -37,3 +37,19 @@ Premade user accounts (the password is `test`):
 And the admin account with the password `admin`.
 
 Note that none of the accounts will be visible at first as they do not exist in the database prior to the first login. I did not upload my database to the repository.
+
+### Screenshots:
+
+![home page](https://github.com/oworob/ug-deviantart-react/blob/main/screenshots/home.png)
+
+![home page 2](https://github.com/oworob/ug-deviantart-react/blob/main/screenshots/home2.png)
+
+![image page](https://github.com/oworob/ug-deviantart-react/blob/main/screenshots/imagepage.png)
+
+![edit page](https://github.com/oworob/ug-deviantart-react/blob/main/screenshots/edit.png)
+
+![comments](https://github.com/oworob/ug-deviantart-react/blob/main/screenshots/comments.png)
+
+![search page](https://github.com/oworob/ug-deviantart-react/blob/main/screenshots/search.png)
+
+![database](https://github.com/oworob/ug-deviantart-react/blob/main/screenshots/database.png)
