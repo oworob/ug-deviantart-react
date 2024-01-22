@@ -6,7 +6,7 @@ This project is a full stack app that imitates [DeviantArt](https://www.devianta
 
 * Frontend - React + Sass
 * Backend - NodeJS + Express
-* Databse - Neo4j
+* Database - Neo4j
 * Authorization - Keycloak 18.0.2
 
 ### Functions:
